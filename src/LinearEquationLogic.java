@@ -28,7 +28,7 @@ public class LinearEquationLogic {
         if (linearEquation.getCoordinate1().substring(1, linearEquation.getCoordinate1().indexOf(",")).equals(linearEquation.getCoordinate2().substring(1, linearEquation.getCoordinate2().indexOf(",")))) {
             System.out.println("These points are on a vertical line: x = " + linearEquation.getCoordinate1().substring(1, linearEquation.getCoordinate1().indexOf(",")));
             System.out.println();
-        } else if (linearEquation.getCoordinate1().substring(linearEquation.getCoordinate1().indexOf(",") + 2, linearEquation.getCoordinate1().indexOf(")")).equals(linearEquation.getCoordinate1().substring(linearEquation.getCoordinate2().indexOf(",") + 2, linearEquation.getCoordinate2().indexOf(")")))) {
+        } else if (linearEquation.getCoordinate1().substring(linearEquation.getCoordinate1().indexOf(",") + 2, linearEquation.getCoordinate1().indexOf(")")).equals(linearEquation.getCoordinate2().substring(linearEquation.getCoordinate2().indexOf(",") + 2, linearEquation.getCoordinate2().indexOf(")")))) {
             System.out.println("These points are on a horizontal line: y = " + linearEquation.yIntercept());
         } else {
             linearEquation.lineInfo();
