@@ -59,11 +59,12 @@ public class LinearEquation {
     }
 
     public void lineInfo() {
-        System.out.println("The two points are: " + coordinate1 + " and " + coordinate2);
-        System.out.println("The equation of the line between these points is: " + equation);
-        System.out.println("The slope of this line is: " + slope);
-        System.out.println("The y-intercept of the line is: " + yIntercept);
-        System.out.println("The distance between the points is: " + distance);
+        System.out.println("The two points are: " + coordinate1 + " and " + coordinate2 + "\n" +
+        "The equation of the line between these points is: " + equation + "\n" +
+        "The slope of this line is: " + slope + "\n" +
+        "The y-intercept of the line is: " + yIntercept + "\n" +
+        "The distance between the points is: " + distance);
+        System.out.println();
     }
 
     public double getCoordinateForX() {
