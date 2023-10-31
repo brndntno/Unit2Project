@@ -23,19 +23,20 @@ public class LinearEquationLogic {
         linearEquation.getCoordinate2();
         linearEquation.slope();
         linearEquation.yIntercept();
-        linearEquation.getDistance();
-        linearEquation.getEquation();
+        linearEquation.distance();
+        linearEquation.equation();
         if (linearEquation.getCoordinate1().substring(1, linearEquation.getCoordinate1().indexOf(",")).equals(linearEquation.getCoordinate2().substring(1, linearEquation.getCoordinate2().indexOf(",")))) {
             System.out.println("These points are on a vertical line: x = " + linearEquation.getCoordinate1().substring(1, linearEquation.getCoordinate1().indexOf(",")));
             System.out.println();
         } else if (linearEquation.getCoordinate1().substring(linearEquation.getCoordinate1().indexOf(",") + 2, linearEquation.getCoordinate1().indexOf(")")).equals(linearEquation.getCoordinate2().substring(linearEquation.getCoordinate2().indexOf(",") + 2, linearEquation.getCoordinate2().indexOf(")")))) {
             System.out.println("These points are on a horizontal line: y = " + linearEquation.yIntercept());
-        } else {
-            linearEquation.lineInfo();
-            System.out.print("Enter a value for x: ");
-            linearEquation.xValue = Integer.parseInt(myScanner.nextLine());
             System.out.println();
-            System.out.println("The point on the line is (" + linearEquation.xValue + ", " + linearEquation.getCoordinateForX() + ")");
+        } else {
+            System.out.println(linearEquation.lineInfo());
+            System.out.print("Enter a value for x: ");
+            double xValue = Double.parseDouble(myScanner.nextLine());
+            System.out.println();
+            System.out.println("The point on the line is (" + xValue + ", " + linearEquation.coordinateForX(xValue) + ")");
             System.out.println();
         }
     }
