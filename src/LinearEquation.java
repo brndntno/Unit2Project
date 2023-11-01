@@ -46,24 +46,84 @@ public class LinearEquation {
 
     public double slope() {
         double slope = (double) (y2 - y1) / (double) (x2 - x1);
-        return slope;
+        return roundedToHundredth(slope);
     }
 
 
     public double yIntercept() {
         double yIntercept = y1 - (slope() * x1);
-        return yIntercept;
+        return roundedToHundredth(yIntercept);
     }
 
 
     public double distance() {
         double distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-        return distance;
+        return roundedToHundredth(distance);
     }
 
     public String equation() {
-        String equation = "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
-        return equation;
+        if (y1 == y2) {
+            String equation = "y = " + yIntercept();
+            return equation;
+        } if (yIntercept() == 0) {
+            if ((y2 - y1) == (x2 - x1)) {
+                String equation = "y = x";
+                return equation;
+            } if ((y2 - y1) == -1 * (x2 - x1)) {
+                String equation = "y = -x";
+                return equation;
+            } if ((y2 - y1) % (x2 - x1) == 0) {
+                String equation = "y = " + ((y2 - y1) / (x2 - x1)) + "x";
+                return equation;
+            } else if (((x2 - x1) < 0) && ((y2 - y1) < 0)) {
+                String equation = "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x";
+                return equation;
+            } else if ((x2 - x1) < 0) {
+                String equation = "y = -" + (y2 - y1) + "/" + Math.abs(x2 - x1) + "x";
+                return equation;
+            } else {
+                String equation = "y = " + (y2 - y1) + "/" + (x2 - x1) + "x";
+                return equation;
+            }
+        } else if (yIntercept() < 0) {
+            if ((y2 - y1) == (x2 - x1)) {
+                String equation = "y = x - " + Math.abs(yIntercept());
+                return equation;
+            } if ((y2 - y1) == -1 * (x2 - x1)) {
+                String equation = "y = -x - " + Math.abs(yIntercept());
+                return equation;
+            } if ((y2 - y1) % (x2 - x1) == 0) {
+                String equation = "y = " + ((y2 - y1) / (x2 - x1)) + "x - " + Math.abs(yIntercept());
+                return equation;
+            } if (((x2 - x1) < 0) && ((y2 - y1) < 0)) {
+                String equation = "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x - " + Math.abs(yIntercept());
+                return equation;
+            } else if ((x2 - x1) < 0) {
+                String equation = "y = -" + (y2 - y1) + "/" + Math.abs(x2 - x1) + "x - " + Math.abs(yIntercept());
+                return equation;
+            } else {
+                String equation = "y = " + (y2 - y1) + "/" + (x2 - x1) + "x - " + Math.abs(yIntercept());
+                return equation;
+            }
+        } if ((y2 - y1) == (x2 - x1)) {
+            String equation = "y = x + " + yIntercept();
+            return equation;
+        } if ((y2 - y1) == -1 * (x2 - x1)) {
+            String equation = "y = -x + " + yIntercept();
+            return equation;
+        } else if ((y2 - y1) % (x2 - x1) == 0) {
+            String equation = "y = " + ((y2 - y1) / (x2 - x1)) + "x + " + yIntercept();
+            return equation;
+        } if (((x2 - x1) < 0) && ((y2 - y1) < 0)) {
+            String equation = "y = " + Math.abs(y2 - y1) + "/" + Math.abs(x2 - x1) + "x + " + yIntercept();
+            return equation;
+        } else if ((x2 - x1) < 0) {
+            String equation = "y = -" + (y2 - y1) + "/" + Math.abs(x2 - x1) + "x + " + yIntercept();
+            return equation;
+        } else {
+            String equation = "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
+            return equation;
+        }
     }
 
     public String lineInfo() {
@@ -74,8 +134,12 @@ public class LinearEquation {
                 "The distance between the points is: " + distance();
     }
 
-    public double coordinateForX(double xValue) {
+    public String coordinateForX(double xValue) {
         coordinateForX = slope() * xValue + yIntercept();
-        return coordinateForX;
+        return "(" + xValue + ", " + coordinateForX + ")";
+    }
+
+    private double roundedToHundredth(double toRound) {
+        return Math.round(toRound * 100) / 100.0;
     }
 }
